@@ -33,13 +33,31 @@ class MyApp extends StatelessWidget {
                 width: double.infinity,
                 child: Card(
                   color: Colors.blue,
-                  child: Text('Inside Card!!x'),
+                  child: Text('Inside Card!!'),
                   elevation: 5,
                 ),
               ),
               Container(
                 child: Text('this is a testing!'),
-              )
+              ),
+              Column(
+                children: transaction.map((e) {
+                  return Card(
+                      child: Row(
+                    children: [
+                      Container(
+                        child: Text(e.amount.toString()),
+                      ),
+                      Column(
+                        children: [Text(e.title), Text(e.date.toString())],
+                      ),
+                    ],
+                  ));
+                }).toList(),
+              ),
+              Container(
+                child: Text('this is a testing!'),
+              ),
             ],
           )),
     );
