@@ -30,7 +30,7 @@ class _TransactionListState extends State<TransactionList> {
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.black, width: 2),
                   borderRadius: BorderRadius.all(Radius.circular(5))),
-              child: Text('${e.amount}',
+              child: Text('${e.amount.toStringAsFixed(2)}',
                   style: TextStyle(
                       color: Colors.purple,
                       fontSize: 18,

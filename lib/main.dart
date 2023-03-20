@@ -21,33 +21,42 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-          appBar: AppBar(
-            title: Text('Expense App'),
+        appBar: AppBar(
+          title: Text('Expense App'),
+          actions: [
+            IconButton(onPressed: () {}, icon: Icon(Icons.add_road)),
+            IconButton(onPressed: () {}, icon: Icon(Icons.add_circle)),
+          ],
+        ),
+        body: SingleChildScrollView(
+          // scolling feature
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start, // up or down
+            crossAxisAlignment: CrossAxisAlignment.start, // left or right
+            children: [
+              Container(
+                width: double.infinity,
+                child: Card(
+                  color: Colors.blue,
+                  child: Text('Inside Card!!'),
+                  elevation: 5,
+                ),
+              ),
+              Container(
+                child: Text('this is a testing!'),
+              ),
+              UserTransactions(),
+              Container(
+                padding: const EdgeInsets.all(10.0),
+                child: const Text('this is a testing!'),
+              ),
+            ],
           ),
-          body: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  width: double.infinity,
-                  child: Card(
-                    color: Colors.blue,
-                    child: Text('Inside Card!!'),
-                    elevation: 5,
-                  ),
-                ),
-                Container(
-                  child: Text('this is a testing!'),
-                ),
-                UserTransactions(),
-                Container(
-                  padding: const EdgeInsets.all(10.0),
-                  child: const Text('this is a testing!'),
-                ),
-              ],
-            ),
-          )),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton:
+            FloatingActionButton(onPressed: () {}, child: Icon(Icons.book)),
+      ),
     );
   }
 }
