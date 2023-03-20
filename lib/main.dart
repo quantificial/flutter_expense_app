@@ -1,5 +1,6 @@
 import 'package:expense_app/transaction.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,6 +14,10 @@ class MyApp extends StatelessWidget {
         id: 't1', title: 'new shoes', amount: 90.11, date: DateTime.now()),
     Transaction(id: 't2', title: 'dinner', amount: 29.99, date: DateTime.now()),
   ];
+
+  String textinput = "";
+
+  final textController = TextEditingController();
 
   // This widget is the root of your application.
   @override
@@ -61,7 +66,10 @@ class MyApp extends StatelessWidget {
                                 fontWeight: FontWeight.w700)),
                       ),
                       Column(
-                        children: [Text(e.title), Text(e.date.toString())],
+                        children: [
+                          Text(e.title),
+                          Text(DateFormat('yyyy-MM-dd').format(e.date))
+                        ],
                       ),
                     ],
                   ));
@@ -70,6 +78,37 @@ class MyApp extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(10.0),
                 child: const Text('this is a testing!'),
+              ),
+              Container(
+                padding: EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    TextField(
+                      decoration: InputDecoration(labelText: 'please input'),
+                      onChanged: (value) {
+                        // this.textinput = value;
+                        // print(this.textinput);
+                      },
+                      controller: textController,
+                      onTap: () {},
+                    ),
+                    ElevatedButton(
+                      style:
+                          ElevatedButton.styleFrom(minimumSize: Size(100, 40)),
+                      onPressed: () {
+                        print(textController.text);
+                      },
+                      child: Text('add tx'),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text('Text Button'),
+                      style: TextButton.styleFrom(
+                          textStyle: TextStyle(fontSize: 50)),
+                    )
+                  ],
+                ),
               ),
             ],
           )),
