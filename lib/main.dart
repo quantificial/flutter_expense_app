@@ -1,6 +1,6 @@
-import 'package:expense_app/transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import './models/transaction.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
 
   String textinput = "";
 
-  final textController = TextEditingController();
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
 
   // This widget is the root of your application.
   @override
@@ -45,6 +46,38 @@ class MyApp extends StatelessWidget {
               ),
               Container(
                 child: Text('this is a testing!'),
+              ),
+              Container(
+                padding: EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    TextField(
+                      decoration: InputDecoration(labelText: 'Title'),
+                      controller: titleController,
+                      onTap: () {},
+                    ),
+                    TextField(
+                      decoration: InputDecoration(labelText: 'Amount'),
+                      controller: amountController,
+                      onTap: () {},
+                    ),
+                    ElevatedButton(
+                      style:
+                          ElevatedButton.styleFrom(minimumSize: Size(100, 40)),
+                      onPressed: () {
+                        print(titleController.text);
+                      },
+                      child: Text('add tx'),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text('Text Button'),
+                      style: TextButton.styleFrom(
+                          textStyle: TextStyle(fontSize: 50)),
+                    )
+                  ],
+                ),
               ),
               Column(
                 children: transaction.map((e) {
@@ -78,37 +111,6 @@ class MyApp extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(10.0),
                 child: const Text('this is a testing!'),
-              ),
-              Container(
-                padding: EdgeInsets.all(10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    TextField(
-                      decoration: InputDecoration(labelText: 'please input'),
-                      onChanged: (value) {
-                        // this.textinput = value;
-                        // print(this.textinput);
-                      },
-                      controller: textController,
-                      onTap: () {},
-                    ),
-                    ElevatedButton(
-                      style:
-                          ElevatedButton.styleFrom(minimumSize: Size(100, 40)),
-                      onPressed: () {
-                        print(textController.text);
-                      },
-                      child: Text('add tx'),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text('Text Button'),
-                      style: TextButton.styleFrom(
-                          textStyle: TextStyle(fontSize: 50)),
-                    )
-                  ],
-                ),
               ),
             ],
           )),
