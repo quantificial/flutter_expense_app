@@ -24,27 +24,29 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             title: Text('Expense App'),
           ),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: double.infinity,
-                child: Card(
-                  color: Colors.blue,
-                  child: Text('Inside Card!!'),
-                  elevation: 5,
+          body: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: double.infinity,
+                  child: Card(
+                    color: Colors.blue,
+                    child: Text('Inside Card!!'),
+                    elevation: 5,
+                  ),
                 ),
-              ),
-              Container(
-                child: Text('this is a testing!'),
-              ),
-              UserTransactions(),
-              Container(
-                padding: const EdgeInsets.all(10.0),
-                child: const Text('this is a testing!'),
-              ),
-            ],
+                Container(
+                  child: Text('this is a testing!'),
+                ),
+                UserTransactions(),
+                Container(
+                  padding: const EdgeInsets.all(10.0),
+                  child: const Text('this is a testing!'),
+                ),
+              ],
+            ),
           )),
     );
   }
