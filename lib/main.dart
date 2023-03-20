@@ -1,3 +1,5 @@
+import 'package:expense_app/widgets/new_transaction.dart';
+import 'package:expense_app/widgets/user_transaction.dart';
 import 'package:flutter/material.dart';
 import 'widgets/transaction_list.dart';
 
@@ -9,9 +11,6 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   String textinput = "";
-
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
 
   // This widget is the root of your application.
   @override
@@ -40,39 +39,7 @@ class MyApp extends StatelessWidget {
               Container(
                 child: Text('this is a testing!'),
               ),
-              Container(
-                padding: EdgeInsets.all(10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    TextField(
-                      decoration: InputDecoration(labelText: 'Title'),
-                      controller: titleController,
-                      onTap: () {},
-                    ),
-                    TextField(
-                      decoration: InputDecoration(labelText: 'Amount'),
-                      controller: amountController,
-                      onTap: () {},
-                    ),
-                    ElevatedButton(
-                      style:
-                          ElevatedButton.styleFrom(minimumSize: Size(100, 40)),
-                      onPressed: () {
-                        print(titleController.text);
-                      },
-                      child: Text('add tx'),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text('Text Button'),
-                      style: TextButton.styleFrom(
-                          textStyle: TextStyle(fontSize: 50)),
-                    )
-                  ],
-                ),
-              ),
-              TransactionList(),
+              UserTransactions(),
               Container(
                 padding: const EdgeInsets.all(10.0),
                 child: const Text('this is a testing!'),
