@@ -1,46 +1,58 @@
 import 'package:flutter/material.dart';
 
 class NewTransaction extends StatelessWidget {
-  NewTransaction({super.key, required this.addTx});
-
   final Function addTx;
-
   final titleController = TextEditingController();
   final amountController = TextEditingController();
 
+  NewTransaction(this.addTx);
+
+  void submitData() {
+    final enteredTitle = titleController.text;
+    final enteredAmount = double.parse(amountController.text);
+
+    if (enteredTitle.isEmpty || enteredAmount <= 0) {
+      return;
+    }
+
+    addTx(
+      enteredTitle,
+      enteredAmount,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          TextField(
-            decoration: InputDecoration(labelText: 'Title'),
-            controller: titleController,
-            onTap: () {},
-          ),
-          TextField(
-            decoration: InputDecoration(labelText: 'Amount'),
-            controller: amountController,
-            keyboardType: TextInputType.number,
-            onTap: () {},
-          ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(minimumSize: Size(100, 40)),
-            onPressed: () {
-              print(titleController.text);
-              this.addTx(
-                  titleController.text, double.parse(amountController.text));
-            },
-            child: Text('add tx'),
-          ),
-          TextButton(
-            onPressed: () {},
-            child: Text('Text Button'),
-            style: TextButton.styleFrom(textStyle: TextStyle(fontSize: 50)),
-          )
-        ],
+    return Card(
+      elevation: 5,
+      child: Container(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: <Widget>[
+            TextField(
+              decoration: InputDecoration(labelText: 'Title'),
+              controller: titleController,
+              onSubmitted: (_) => submitData(),
+              // onChanged: (val) {
+              //   titleInput = val;
+              // },
+            ),
+            TextField(
+              decoration: InputDecoration(labelText: 'Amount'),
+              controller: amountController,
+              keyboardType: TextInputType.number,
+              onSubmitted: (_) => submitData(),
+              // onChanged: (val) => amountInput = val,
+            ),
+            TextButton(
+              child: Text('Add Transaction'),
+              style: TextButton.styleFrom(
+                  textStyle: TextStyle(color: Colors.purple)),
+              onPressed: submitData,
+            ),
+          ],
+        ),
       ),
     );
   }
