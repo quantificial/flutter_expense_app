@@ -9,7 +9,8 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final List<Transaction> transaction = [
-    Transaction(id: 't1', title: 'new shoes', amount: 90, date: DateTime.now()),
+    Transaction(
+        id: 't1', title: 'new shoes', amount: 90.11, date: DateTime.now()),
     Transaction(id: 't2', title: 'dinner', amount: 29.99, date: DateTime.now()),
   ];
 
@@ -46,13 +47,18 @@ class MyApp extends StatelessWidget {
                       child: Row(
                     children: [
                       Container(
+                        width: 85,
                         margin:
                             EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                         padding: EdgeInsets.all(5),
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black, width: 2),
                             borderRadius: BorderRadius.all(Radius.circular(5))),
-                        child: Text(e.amount.toString()),
+                        child: Text('${e.amount}',
+                            style: TextStyle(
+                                color: Colors.purple,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700)),
                       ),
                       Column(
                         children: [Text(e.title), Text(e.date.toString())],
@@ -62,7 +68,8 @@ class MyApp extends StatelessWidget {
                 }).toList(),
               ),
               Container(
-                child: Text('this is a testing!'),
+                padding: const EdgeInsets.all(10.0),
+                child: const Text('this is a testing!'),
               ),
             ],
           )),
