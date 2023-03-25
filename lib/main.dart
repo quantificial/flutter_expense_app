@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             textTheme: ThemeData.light().textTheme.copyWith(
                   displaySmall: TextStyle(
                     fontFamily: 'OpenSans',
-                    fontSize: 20,
+                    fontSize: 10,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -100,6 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        //titleTextStyle: Theme.of(context).textTheme.bodySmall,
         title: Text(
           'Personal Expenses',
         ),
@@ -110,14 +111,16 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Chart(_recentTransactions),
-            TransactionList(_userTransactions),
-          ],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Chart(_recentTransactions),
+              TransactionList(_userTransactions),
+            ],
+          ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
